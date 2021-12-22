@@ -16,6 +16,7 @@ from ..const import (
     ATTR_NAME,
     ATTR_PORT,
     ATTR_PROTECTED,
+    ATTR_COMPRESSED,
     ATTR_REFRESH_TOKEN,
     ATTR_REPOSITORIES,
     ATTR_SIZE,
@@ -65,6 +66,7 @@ SCHEMA_BACKUP = vol.Schema(
         vol.Required(ATTR_TYPE): vol.Coerce(BackupType),
         vol.Required(ATTR_NAME): str,
         vol.Required(ATTR_DATE): str,
+        vol.Optional(ATTR_COMPRESSED, default=True): vol.Boolean(),
         vol.Inclusive(ATTR_PROTECTED, "encrypted"): vol.All(
             str, vol.Length(min=1, max=1)
         ),
